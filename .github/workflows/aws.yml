@@ -23,20 +23,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - run : pip install cfn-lint
-        
-      - run: 'aws --version'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          AWS_DEFAULT_OUTPUT: json
-          AWS_EC2_METADATA_DISABLED: true
+      - name: Instalação do Lint
+        run : pip install cfn-lint
 
       - name: Executa deploy.sh
         run: |
-          chmod +x ${GITHUB_WORKSPACE}/deploy/deploy.sh
-          ${GITHUB_WORKSPACE}/deploy/deploy.sh
+          git clone https://github.com/SurianBr/aws-deploy.git
+          chmod +x aws-deploy/deploy/deploy.sh
+          aws-deploy/deploy/deploy.sh
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
