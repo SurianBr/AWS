@@ -1,3 +1,6 @@
-Type: AWS::S3::Bucket
-Properties: 
-  BucketName: bucket-dados-voos
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  BktDadosVoos:
+    Type: AWS::S3::Bucket
+  Properties: 
+    BucketName: bkt-dados-voos
