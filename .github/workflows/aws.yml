@@ -28,7 +28,7 @@ jobs:
         run: 'aws --version'
 
       - name: instalação do jq
-        run: 'sudo apt-get install jq -Y'
+        run: 'sudo apt-get install jq -y'
         
       - run: aws s3 ls
         env:
