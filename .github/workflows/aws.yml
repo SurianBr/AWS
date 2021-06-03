@@ -24,14 +24,18 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Versão do aws-cli
-        run: 'aws --version'
-
-      - name: instalação do jq
-        run: 'sudo apt-get install jq -y'
+      - name: Versão das dependencias
+        run: |
+          'aws --version'
+          'jq --version'
         
-      - run: aws s3 ls
+      - name: Prepara variaveis de ambiente
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
+
+      - name: Executa deploy.sh
+        run: |
+          'chmod +x "${GITHUB_WORKSPACE}/deploy/deploy.sh"'
+          './${GITHUB_WORKSPACE}/deploy/deploy.sh'

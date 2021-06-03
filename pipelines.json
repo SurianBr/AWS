@@ -1,0 +1,8 @@
+{
+    "pipes": [
+      {
+        "nome": "bucket-dados-voos",
+        "deploy_folders": []
+      }
+    ]
+}
