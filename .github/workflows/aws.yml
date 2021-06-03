@@ -26,6 +26,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Versão do aws-cli
         run: 'aws --version'
+
+      - name: instalação do jq
+        run: 'sudo apt-get install jq -Y'
         
       - run: aws s3 ls
         env:
