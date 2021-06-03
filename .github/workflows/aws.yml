@@ -32,4 +32,4 @@ jobs:
       - name: Executa deploy.sh
         run: |
           chmod +x ${GITHUB_WORKSPACE}/deploy/deploy.sh
-          ./${GITHUB_WORKSPACE}/deploy/deploy.sh
+          .${GITHUB_WORKSPACE}/deploy/deploy.sh
