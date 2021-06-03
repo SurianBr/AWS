@@ -3,7 +3,7 @@ for PIPE in $(jq '.pipes[].nome' -r pipelines.json)
 do
   echo valida template
   cfn-lint "${GITHUB_WORKSPACE}/${PIPE}/infra/template.yml"
-  if [ $retval -ne 0 ]; then
+  if [ $? -ne 0 ]; then
     echo "Erro no lint"
     exit -1
   fi
